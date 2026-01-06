@@ -1,0 +1,89 @@
+﻿<Page
+    x:Class="ProyectoUWPenBlanco.AcercaDePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProyectoUWPenBlanco">
+
+    <Grid>
+        <!-- Fondo decorativo -->
+        <Grid.Background>
+            <ImageBrush ImageSource="AssetsGrupal/fondoPokemons.jpg" Stretch="UniformToFill" Opacity="0.08"/>
+        </Grid.Background>
+
+        <!-- Scroll lateral -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Padding="40" Spacing="20">
+
+                <!-- Título -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+                    <Image Source="AssetsGrupal/pokeball.png" Width="36" Height="36"/>
+                    <TextBlock Text="Acerca de la Aplicación" FontSize="32" FontWeight="Bold" Foreground="DarkSlateBlue"/>
+                </StackPanel>
+
+                <!-- Panel principal -->
+                <Border Background="White" CornerRadius="16" Padding="30" BorderBrush="SlateBlue" BorderThickness="1" Width="850">
+                    <StackPanel Spacing="18">
+
+                        <!-- Descripción general -->
+                        <TextBlock TextWrapping="Wrap" FontSize="16">
+                            Esta aplicación ha sido desarrollada como parte del Proyecto Grupal de la asignatura 
+                            <Run FontWeight="Bold">Interacción Persona–Ordenador II (IPO2)</Run> del Grado en Ingeniería Informática 
+                            en la Escuela Superior de Informática de Ciudad Real (UCLM). Su objetivo es ofrecer una experiencia 
+                            de usuario interactiva, visualmente atractiva y accesible para todos los públicos.
+                        </TextBlock>
+
+                        <!-- Funcionalidades -->
+                        <StackPanel>
+                            <TextBlock Text="✨ Funcionalidades destacadas:" FontSize="17" FontWeight="Bold" Foreground="DarkSlateBlue"/>
+                            <StackPanel Margin="10,5,0,0">
+                                <TextBlock Text="• Pokédex animada e interactiva con más de 25 Pokémon." FontSize="15"/>
+                                <TextBlock Text="• Filtros inteligentes por tipo, con scroll y diseño responsivo." FontSize="15"/>
+                                <TextBlock Text="• Animaciones, estados personalizados y controles visuales." FontSize="15"/>
+                                <TextBlock Text="• Interfaz adaptada con Blend y recursos visuales SVG/PNG." FontSize="15"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Frase -->
+                        <TextBlock FontStyle="Italic" FontSize="14" Foreground="Gray" TextAlignment="Center">
+                            “Un gran diseño no es solo cómo se ve, sino cómo funciona.” – Steve Jobs
+                        </TextBlock>
+
+                        <!-- Créditos de equipo -->
+                        <StackPanel>
+                            <TextBlock Text="👥 Equipo de desarrollo:" FontSize="14" FontWeight="Bold"/>
+                            <TextBlock Text="• Álvaro García Martínez" FontSize="14"/>
+                            <TextBlock Text="• Raúl Santiago Roldán" FontSize="14"/>
+                        </StackPanel>
+
+                        <!-- Profesor e institución -->
+                        <TextBlock FontSize="14" Foreground="Gray" TextWrapping="Wrap" Margin="0,8,0,0">
+                            📘 Tutorizado por el profesor Ramón Hervás, en la Escuela Superior de Informática – Universidad de Castilla-La Mancha (UCLM).
+                        </TextBlock>
+
+                        <!-- Tecnologías -->
+                        <TextBlock FontSize="14" Foreground="Gray" TextWrapping="Wrap">
+                            🛠️ Tecnologías utilizadas: UWP, XAML, C#, Visual Studio, Blend, animaciones XAML, diseño adaptativo, recursos SVG/PNG optimizados.
+                        </TextBlock>
+
+                        <!-- Contacto -->
+                        <StackPanel>
+                            <TextBlock Text="📫 Contacto:" FontSize="14" FontWeight="Bold"/>
+                            <TextBlock Text="📧 alvaro.garcia60@alu.uclm.es" FontSize="14"/>
+                            <TextBlock Text="📧 raul.santiago1@alu.uclm.es" FontSize="14"/>
+                            <TextBlock Text="🌐 www.ipokemon-uclm.com" FontSize="14"/>
+                        </StackPanel>
+
+                        <!-- Créditos visuales -->
+                        <TextBlock FontSize="13" Foreground="SlateGray" TextWrapping="Wrap" Margin="0,10,0,0">
+                            🎨 Recursos visuales e iconografía: imágenes de Pokémon (GameFreak/Nintendo), iconos de Segoe MDL2 Assets, fondos ilustrativos educativos.
+                        </TextBlock>
+
+                        <!-- Pie de página -->
+                        <TextBlock Text="📚 Total de Pokémon integrados: 27" FontSize="13" FontWeight="SemiBold" Foreground="SlateGray" TextAlignment="Right"/>
+                        <TextBlock Text="Versión 1.0 – Última actualización: Mayo 2025" FontSize="12" Foreground="SlateGray" TextAlignment="Right"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

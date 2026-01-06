@@ -1,0 +1,150 @@
+﻿<Page
+    x:Class="ProyectoUWPenBlanco.CombatePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProyectoUWPenBlanco"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Padding="30">
+            <Grid.Background>
+                <ImageBrush ImageSource="AssetsGrupal/batalla_fondo.png"
+                            Stretch="UniformToFill"
+                            Opacity="0.05"/>
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Título -->
+            <TextBlock Text="Combate Pokémon"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="DarkSlateBlue"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+            <!-- Zona de combate -->
+            <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,20" ColumnSpacing="80">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Jugador 1 -->
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center" Width="320">
+                    <Border CornerRadius="20" BorderBrush="SlateBlue" BorderThickness="3" Background="White" Padding="10">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock x:Name="txtNombre1"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       Foreground="Purple"
+                                       TextAlignment="Center"
+                                       Margin="0,4"/>
+                            <ProgressBar x:Name="barraVida1"
+                                         Width="260"
+                                         Height="10"
+                                         Foreground="Red"
+                                         Maximum="100"
+                                         Value="100"
+                                         Margin="0,4"/>
+                            <ProgressBar x:Name="barraEnergia1"
+                                         Width="260"
+                                         Height="8"
+                                         Foreground="Gold"
+                                         Maximum="100"
+                                         Value="100"
+                                         Margin="0,0,0,6"/>
+                            <ContentControl x:Name="contenedor1" Width="260" Height="260">
+                                <ContentControl.Transitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition FromHorizontalOffset="-100"/>
+                                    </TransitionCollection>
+                                </ContentControl.Transitions>
+                            </ContentControl>
+                            <TextBlock Text="{Binding ElementName=txtNombre1, Path=Text}"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       Margin="0,10,0,0"
+                                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="6" Margin="0,8">
+                        <Button Content="Atacar" Click="Atacar_Click_J1" Background="#4B0082" Foreground="White" Padding="6"/>
+                        <Button Content="Especial" Click="Especial_Click_J1" Background="#B22222" Foreground="White" Padding="6"/>
+                        <Button Content="Idle" Click="Idle_Click_J1" Background="#888" Foreground="White" Padding="6"/>
+                        <Button Content="Defensa" Click="Defensa_Click_J1" Background="#00796B" Foreground="White" Padding="6"/>
+                        <Button Content="Descansar" Click="Descansar_Click_J1" Background="#FFA000" Foreground="White" Padding="6"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Jugador 2 -->
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" Width="320">
+                    <Border CornerRadius="20" BorderBrush="SlateBlue" BorderThickness="3" Background="White" Padding="10">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock x:Name="txtNombre2"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       Foreground="Purple"
+                                       TextAlignment="Center"
+                                       Margin="0,4"/>
+                            <ProgressBar x:Name="barraVida2"
+                                         Width="260"
+                                         Height="10"
+                                         Foreground="Red"
+                                         Maximum="100"
+                                         Value="100"
+                                         Margin="0,4"/>
+                            <ProgressBar x:Name="barraEnergia2"
+                                         Width="260"
+                                         Height="8"
+                                         Foreground="Gold"
+                                         Maximum="100"
+                                         Value="100"
+                                         Margin="0,0,0,6"/>
+                            <ContentControl x:Name="contenedor2" Width="260" Height="260">
+                                <ContentControl.Transitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition FromHorizontalOffset="100"/>
+                                    </TransitionCollection>
+                                </ContentControl.Transitions>
+                            </ContentControl>
+                            <TextBlock Text="{Binding ElementName=txtNombre2, Path=Text}"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       Margin="0,10,0,0"
+                                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="6" Margin="0,8">
+                        <Button Content="Atacar" Click="Atacar_Click_J2" Background="#4B0082" Foreground="White" Padding="6"/>
+                        <Button Content="Especial" Click="Especial_Click_J2" Background="#B22222" Foreground="White" Padding="6"/>
+                        <Button Content="Idle" Click="Idle_Click_J2" Background="#888" Foreground="White" Padding="6"/>
+                        <Button Content="Defensa" Click="Defensa_Click_J2" Background="#00796B" Foreground="White" Padding="6"/>
+                        <Button Content="Descansar" Click="Descansar_Click_J2" Background="#FFA000" Foreground="White" Padding="6"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <!-- Panel de narrador con estilo llamativo -->
+            <Border Grid.Row="2" Margin="20,30,20,10" Padding="12"
+                    Background="#EEE" BorderBrush="DarkSlateBlue" BorderThickness="2" CornerRadius="10">
+                <TextBlock x:Name="txtNarrador"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           TextAlignment="Center"
+                           Foreground="#333"
+                           TextWrapping="Wrap"
+                           Text="¡El combate está por comenzar!"/>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,107 @@
+﻿<Page
+    x:Class="ProyectoUWPenBlanco.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProyectoUWPenBlanco"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+
+    <Page.Resources>
+        <!-- ✅ Estilo local válido para UWP -->
+        <Style x:Key="SplitViewButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#66FFFFFF"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="Center"
+                                              Margin="10,0"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Botón hamburguesa -->
+        <Border Grid.Row="0" Background="DarkSlateBlue" Padding="8">
+            <Button x:Name="btnMenu" Click="ToggleMenu">
+                <FontIcon Foreground="White" Glyph="&#xE700;" FontFamily="Segoe MDL2 Assets"/>
+            </Button>
+        </Border>
+
+        <!-- SplitView -->
+        <SplitView x:Name="sView"
+                   Grid.Row="1"
+                   IsPaneOpen="True"
+                   CompactPaneLength="30"
+                   DisplayMode="CompactInline">
+
+            <!-- Menú lateral -->
+            <SplitView.Pane>
+                <StackPanel Background="#EEE">
+
+                    <Button Style="{StaticResource SplitViewButtonStyle}" Click="irInicio">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Home" Margin="0,0,10,0"/>
+                            <TextBlock Text="Inicio"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource SplitViewButtonStyle}" Click="irAmispokemon">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Emoji" Margin="0,0,10,0"/>
+                            <TextBlock Text="Mis Pokémon"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource SplitViewButtonStyle}" Click="irPokeDex">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Pictures" Margin="0,0,10,0"/>
+                            <TextBlock Text="Pokédex"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource SplitViewButtonStyle}" Click="irCombate">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="People" Margin="0,0,10,0"/>
+                            <TextBlock Text="Combate"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Style="{StaticResource SplitViewButtonStyle}" Click="irAcercaDe">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="ContactInfo" Margin="0,0,10,0"/>
+                            <TextBlock Text="Acerca de"/>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+            </SplitView.Pane>
+
+            <!-- Contenido principal -->
+            <Frame x:Name="fmMain"/>
+        </SplitView>
+    </Grid>
+</Page>
+

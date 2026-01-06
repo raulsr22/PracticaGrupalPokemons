@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="ProyectoUWPenBlanco.InicioPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProyectoUWPenBlanco"
+    Background="Transparent">
+
+    <Grid>
+        <!-- Fondo -->
+        <Grid.Background>
+            <ImageBrush ImageSource="AssetsGrupal/fondoPokemons.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <!-- Contenedor visual -->
+        <Border Background="#DDFFFFFF"
+                CornerRadius="30"
+                Padding="30"
+                Width="500"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                BorderBrush="DarkSlateBlue"
+                BorderThickness="2">
+            <StackPanel Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="¡Bienvenido al Mundo Pokémon!"
+                           FontSize="36"
+                           FontWeight="Bold"
+                           Foreground="DarkSlateBlue"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"/>
+
+                <TextBlock Text="Explora, descubre y entrena a tus Pokémon favoritos"
+                           FontSize="20"
+                           Foreground="#444"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"/>
+
+                <TextBlock Text="¡Atrévete a convertirte en el mejor entrenador!"
+                           FontSize="16"
+                           FontStyle="Italic"
+                           Foreground="DarkGray"
+                           TextAlignment="Center"/>
+
+                <Image Source="AssetsGrupal/pokeball.png"
+                       Width="130" Height="130"
+                       HorizontalAlignment="Center"/>
+
+                <!-- Botón con estilo UWP válido -->
+                <Button x:Name="btnComenzar"
+                        Content="Comenzar"
+                        Width="180"
+                        FontSize="22"
+                        Background="DarkSlateBlue"
+                        Foreground="White"
+                        Padding="10"
+                        Click="Comenzar_Click"
+                        BorderBrush="#888"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
