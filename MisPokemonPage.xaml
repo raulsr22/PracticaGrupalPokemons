@@ -1,0 +1,170 @@
+﻿<Page
+    x:Class="ProyectoUWPenBlanco.MisPokemonPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProyectoUWPenBlanco"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="PanelPrincipal" Padding="20" Spacing="40">
+
+            <!-- GENGAR -->
+            <RelativePanel Margin="20">
+                <local:GengarRSR x:Name="ucGengar" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombreGengar" Text="Gengar" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucGengar" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoGengar" Text="Fantasma / Veneno" FontSize="20" RelativePanel.Below="txtNombreGengar" RelativePanel.RightOf="ucGengar" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescGengar" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoGengar" RelativePanel.RightOf="ucGengar" Margin="40,10,0,0">
+        Gengar es célebre por su inquietante sonrisa y su capacidad para ocultarse entre las sombras. Este Pokémon tipo Fantasma/Veneno no solo puede atravesar muros, sino que también disfruta asustando a sus víctimas con su presencia invisible. Se dice que su risa gélida puede oírse incluso en habitaciones vacías. Algunos entrenadores aseguran que sienten un escalofrío recorrerles la espalda justo antes de que Gengar aparezca desde la penumbra, listo para sembrar el miedo con una carcajada siniestra.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+
+            <!-- GARDEVOIR -->
+            <RelativePanel Margin="20">
+                <local:GardevoirAPM x:Name="ucGardevoir" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombreGardevoir" Text="Gardevoir" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucGardevoir" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoGardevoir" Text="Psíquico / Hada" FontSize="20" RelativePanel.Below="txtNombreGardevoir" RelativePanel.RightOf="ucGardevoir" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescGardevoir" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoGardevoir" RelativePanel.RightOf="ucGardevoir" Margin="40,10,0,0">
+        Gardevoir es un Pokémon elegante y poderoso que está dispuesto a arriesgar su vida por su entrenador. Gracias a sus habilidades psíquicas, puede generar pequeños agujeros negros para proteger a quienes ama. Su lealtad es legendaria, y se dice que puede prever desastres inminentes para evitar el sufrimiento ajeno. Su presencia serena y su conexión emocional con los humanos lo convierten en un compañero único e invaluable.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+
+            <!-- BULBASAUR -->
+            <RelativePanel Margin="20">
+                <local:BulbasaurRH x:Name="ucBulbasaur" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombreBulbasaur" Text="Bulbasaur" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucBulbasaur" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoBulbasaur" Text="Planta / Veneno" FontSize="20" RelativePanel.Below="txtNombreBulbasaur" RelativePanel.RightOf="ucBulbasaur" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescBulbasaur" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoBulbasaur" RelativePanel.RightOf="ucBulbasaur" Margin="40,10,0,0">
+        Bulbasaur es conocido por la semilla que lleva en su espalda desde su nacimiento. Esta semilla crece al absorber los rayos del sol, permitiéndole almacenar energía para futuros combates. Su combinación de habilidades vegetales y venenosas lo convierte en un aliado estratégico desde las primeras etapas de cualquier aventura.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+            <!-- CORPHISH -->
+            <RelativePanel Margin="20">
+                <local:CorphishJFV x:Name="ucCorphish" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombreCorphish" Text="Corphish" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucCorphish" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoCorphish" Text="Agua" FontSize="20" RelativePanel.Below="txtNombreCorphish" RelativePanel.RightOf="ucCorphish" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescCorphish" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoCorphish" RelativePanel.RightOf="ucCorphish" Margin="40,10,0,0">
+        Corphish es un Pokémon tenaz que se adapta fácilmente a cualquier entorno. Siempre preparado para la batalla, utiliza sus pinzas robustas para defender su territorio con determinación. A pesar de su aspecto agresivo, es leal y persistente, lo que lo convierte en un luchador fiable en cualquier equipo.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+            <!-- MANKEY -->
+            <RelativePanel Margin="20">
+                <local:MankeyAGM x:Name="ucMankey" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombreMankey" Text="Mankey" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucMankey" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoMankey" Text="Lucha" FontSize="20" RelativePanel.Below="txtNombreMankey" RelativePanel.RightOf="ucMankey" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescMankey" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoMankey" RelativePanel.RightOf="ucMankey" Margin="40,10,0,0">
+        Mankey es un Pokémon extremadamente temperamental, conocido por enfurecerse con facilidad ante el más mínimo estímulo. Una vez irritado, se lanza al combate con una energía desbordante y movimientos impredecibles. Su naturaleza impulsiva lo convierte en un rival feroz y en un compañero que exige respeto.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+            <!-- OSHAWOTT -->
+            <RelativePanel Margin="20">
+                <local:OshawottHAM x:Name="ucOshawott" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombreOshawott" Text="Oshawott" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucOshawott" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoOshawott" Text="Agua" FontSize="20" RelativePanel.Below="txtNombreOshawott" RelativePanel.RightOf="ucOshawott" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescOshawott" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoOshawott" RelativePanel.RightOf="ucOshawott" Margin="40,10,0,0">
+        Oshawott lleva consigo una valiosa concha llamada "scalchop" que utiliza tanto como herramienta ofensiva como defensiva. Con una actitud confiada y un corazón valiente, este Pokémon demuestra que incluso los más pequeños pueden luchar con gran determinación y estilo.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+            <!-- PACHIRISU -->
+            <RelativePanel Margin="20">
+                <local:PachirisuNSL x:Name="ucPachirisu" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombrePachirisu" Text="Pachirisu" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucPachirisu" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoPachirisu" Text="Eléctrico" FontSize="20" RelativePanel.Below="txtNombrePachirisu" RelativePanel.RightOf="ucPachirisu" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescPachirisu" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoPachirisu" RelativePanel.RightOf="ucPachirisu" Margin="40,10,0,0">
+        Pachirisu es un Pokémon vivaz que acumula electricidad en sus mejillas para defenderse y sorprender a sus oponentes. Su comportamiento juguetón y su agilidad lo hacen ideal para combates veloces. Además, tiene el curioso hábito de esconder sus objetos favoritos en su cola.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+            <!-- PICHU -->
+            <RelativePanel Margin="20">
+                <local:PichuJMG x:Name="ucPichu" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombrePichu" Text="Pichu" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucPichu" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoPichu" Text="Eléctrico" FontSize="20" RelativePanel.Below="txtNombrePichu" RelativePanel.RightOf="ucPichu" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescPichu" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoPichu" RelativePanel.RightOf="ucPichu" Margin="40,10,0,0">
+        Aunque Pichu es pequeño y adorable, posee una carga eléctrica considerable. Su energía es aún inestable, por lo que a veces se descarga involuntariamente al emocionarse o asustarse. Su ternura y potencial lo convierten en un compañero entrañable y prometedor.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+
+            <!-- PORYGON2 -->
+            <RelativePanel Margin="20">
+                <local:Porygon2DAR x:Name="ucPorygon2" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombrePorygon2" Text="Porygon2" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucPorygon2" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoPorygon2" Text="Normal" FontSize="20" RelativePanel.Below="txtNombrePorygon2" RelativePanel.RightOf="ucPorygon2" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescPorygon2" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoPorygon2" RelativePanel.RightOf="ucPorygon2" Margin="40,10,0,0">
+        Porygon2 es una versión mejorada de Porygon, diseñado para adaptarse al entorno digital y realizar exploraciones espaciales. Gracias a su sofisticado software, puede ejecutar maniobras complejas y tomar decisiones autónomas. Su aspecto artificial contrasta con su avanzado nivel de inteligencia.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+            <!-- REGICE -->
+            <RelativePanel Margin="20">
+                <local:RegiceVVG x:Name="ucRegice" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombreRegice" Text="Regice" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucRegice" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoRegice" Text="Hielo" FontSize="20" RelativePanel.Below="txtNombreRegice" RelativePanel.RightOf="ucRegice" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescRegice" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoRegice" RelativePanel.RightOf="ucRegice" Margin="40,10,0,0">
+        Regice posee un cuerpo compuesto por hielo de la era glacial que nunca se derrite. Controla temperaturas extremadamente bajas, lo que le permite congelar todo lo que lo rodea. Se mueve con majestuosidad y su sola presencia impone respeto entre otros Pokémon.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+            <!-- SWABLU -->
+            <RelativePanel Margin="20">
+                <local:SwabluSCP x:Name="ucSwablu" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombreSwablu" Text="Swablu" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucSwablu" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoSwablu" Text="Normal / Volador" FontSize="20" RelativePanel.Below="txtNombreSwablu" RelativePanel.RightOf="ucSwablu" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescSwablu" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoSwablu" RelativePanel.RightOf="ucSwablu" Margin="40,10,0,0">
+        Swablu tiene unas alas suaves como nubes que limpia constantemente para mantener su aspecto pulcro. Suele posarse sobre las cabezas de las personas como si fueran ramas. Su naturaleza tranquila y su aspecto angelical lo hacen muy querido entre entrenadores jóvenes.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+            <!-- PSYDUCK -->
+            <RelativePanel Margin="20">
+                <local:PsyduckERP x:Name="ucPsyduck" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombrePsyduck" Text="Psyduck" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucPsyduck" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoPsyduck" Text="Agua" FontSize="20" RelativePanel.Below="txtNombrePsyduck" RelativePanel.RightOf="ucPsyduck" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescPsyduck" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoPsyduck" RelativePanel.RightOf="ucPsyduck" Margin="40,10,0,0">
+        Psyduck parece confundido la mayor parte del tiempo, pero cuando sufre intensos dolores de cabeza, libera una potente energía psíquica de forma incontrolada. Este fenómeno sorprende a sus oponentes y a veces incluso al propio Psyduck.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+            <!-- WARTORTLE -->
+            <RelativePanel Margin="20">
+                <local:WartortleAAA x:Name="ucWartortle" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombreWartortle" Text="Wartortle" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucWartortle" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoWartortle" Text="Agua" FontSize="20" RelativePanel.Below="txtNombreWartortle" RelativePanel.RightOf="ucWartortle" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescWartortle" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoWartortle" RelativePanel.RightOf="ucWartortle" Margin="40,10,0,0">
+        Wartortle es la forma evolucionada de Squirtle. Su cola peluda y orejas puntiagudas no solo lo hacen distinguible, sino que también reflejan su longevidad. Es un nadador veloz que utiliza su caparazón como defensa y como propulsor en el agua.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+            <!-- HORSEA -->
+            <RelativePanel Margin="20">
+                <local:PokemonHorsea x:Name="ucHorsea" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombreHorsea" Text="Horsea" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucHorsea" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoHorsea" Text="Agua" FontSize="20" RelativePanel.Below="txtNombreHorsea" RelativePanel.RightOf="ucHorsea" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescHorsea" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoHorsea" RelativePanel.RightOf="ucHorsea" Margin="40,10,0,0">
+        Horsea nada con agilidad y precisión incluso en fuertes corrientes marinas. Utiliza su capacidad para disparar chorros de tinta como defensa natural. Aunque pequeño, es valiente y muy protector con su territorio.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+            <!-- VICTINI -->
+            <RelativePanel Margin="20">
+                <local:VictiniLDM x:Name="ucVictini" Width="300" Height="300"/>
+                <TextBlock x:Name="txtNombreVictini" Text="Victini" FontSize="26" FontWeight="Bold" RelativePanel.RightOf="ucVictini" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtTipoVictini" Text="Psíquico / Fuego" FontSize="20" RelativePanel.Below="txtNombreVictini" RelativePanel.RightOf="ucVictini" Margin="40,10,0,0"/>
+                <TextBlock x:Name="txtDescVictini" TextWrapping="Wrap" FontSize="16" Width="480" Foreground="DarkSlateGray" RelativePanel.Below="txtTipoVictini" RelativePanel.RightOf="ucVictini" Margin="40,10,0,0">
+        Victini es un Pokémon místico que se dice otorga energía ilimitada a quien lo posea. Su presencia trae buena suerte, y su poder aumenta el rendimiento de sus compañeros de equipo. Representa la victoria absoluta en cualquier enfrentamiento.
+                </TextBlock>
+            </RelativePanel>
+            <Rectangle Height="1" Fill="Gray" Margin="0,0"/>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>

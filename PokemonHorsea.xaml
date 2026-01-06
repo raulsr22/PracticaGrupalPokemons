@@ -1,0 +1,780 @@
+﻿<UserControl
+    x:Class="ProyectoUWPenBlanco.PokemonHorsea"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProyectoUWPenBlanco"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <Storyboard x:Name="Accion_de_descanso" AutoReverse="True" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-80"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ala_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1.5"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.5000000" Value="1.5"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="Ataque_debil" FillBehavior="Stop">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Burbuja_Pequeña_Completa" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.6000000" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.8000000" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Burbuja_Pequeña_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="-70"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="-122"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.6000000" Value="-140"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.8000000" Value="-200"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-300"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="-300"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Burbuja_Pequeña_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="11"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="11"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.6000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.8000000" Value="-15"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-25"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="-25"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Burbuja_Pequeña_Completa" Storyboard.TargetProperty="(Grid.Row)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2000000">
+                    <DiscreteObjectKeyFrame.Value>
+                        <x:Int32>2</x:Int32>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.4000000">
+                    <DiscreteObjectKeyFrame.Value>
+                        <x:Int32>2</x:Int32>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.6000000">
+                    <DiscreteObjectKeyFrame.Value>
+                        <x:Int32>2</x:Int32>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.8000000">
+                    <DiscreteObjectKeyFrame.Value>
+                        <x:Int32>2</x:Int32>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:01">
+                    <DiscreteObjectKeyFrame.Value>
+                        <x:Int32>2</x:Int32>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="00:00:01.2000000">
+                    <DiscreteObjectKeyFrame.Value>
+                        <x:Int32>2</x:Int32>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimation Duration="00:00:00.4000000" Storyboard.TargetName="burbuja" To="1.297" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"/>
+            <DoubleAnimation Duration="00:00:00.4000000" Storyboard.TargetName="burbuja" To="1.219" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"/>
+            <DoubleAnimation Duration="00:00:00.4000000" Storyboard.TargetName="Parte_burbuja1" To="1.297" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"/>
+            <DoubleAnimation Duration="00:00:00.4000000" Storyboard.TargetName="Parte_burbuja1" To="1.219" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"/>
+            <DoubleAnimation Duration="00:00:00.4000000" Storyboard.TargetName="Parte_burbuja2" To="1.297" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"/>
+            <DoubleAnimation Duration="00:00:00.4000000" Storyboard.TargetName="Parte_burbuja2" To="1.219" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="-50.4"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="150"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="burbuja" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="-7.125"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="-80.958"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="burbuja" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="-5.25"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="-33.917"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Parte_burbuja1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="-9.708"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="-83.541"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Parte_burbuja1" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="-8.174"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="-36.841"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Parte_burbuja2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="-11.934"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="-85.767"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Parte_burbuja2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="-6.096"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="-34.763"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Cabeza_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="15"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="-2.632"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Cabeza_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-10"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Cabeza_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-6"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="Ataque_fuerte" FillBehavior="Stop">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Burbuja_Grande_Completa" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.3"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Burbuja_Grande_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="-630"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="-550"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-700"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-850"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="-850"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Burbuja_Grande_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="62"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.2000000" Value="20"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.6000000" Value="-50"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="150"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.6000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Duration="00:00:01.2000000" Storyboard.TargetName="Burbuja_Grande" To="-49.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"/>
+            <DoubleAnimation Duration="00:00:01.2000000" Storyboard.TargetName="Bubuja_part1" To="-115.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"/>
+            <DoubleAnimation Duration="00:00:01.2000000" Storyboard.TargetName="Bubuja_part1" To="-49.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"/>
+            <DoubleAnimation Duration="00:00:01.2000000" Storyboard.TargetName="Burbuja_part2" To="-49.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"/>
+            <DoubleAnimation Duration="00:00:01.2000000" Storyboard.TargetName="Burbuja_Grande" To="-115.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"/>
+            <DoubleAnimation Duration="00:00:01.2000000" Storyboard.TargetName="Burbuja_part2" To="-115.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"/>
+            <DoubleAnimation Duration="00:00:01.2000000" Storyboard.TargetName="Burbuja_Grande" To="0" Storyboard.TargetProperty="(UIElement.Opacity)"/>
+            <DoubleAnimation Duration="00:00:01.2000000" Storyboard.TargetName="Bubuja_part1" To="0" Storyboard.TargetProperty="(UIElement.Opacity)"/>
+            <DoubleAnimation Duration="00:00:01.2000000" Storyboard.TargetName="Burbuja_part2" To="0" Storyboard.TargetProperty="(UIElement.Opacity)"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Cabeza_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="15"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.6000000" Value="0.877"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Cabeza_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-10"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.6000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Cabeza_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-6"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.6000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+
+        </Storyboard>
+        <Storyboard x:Name="Moviemiento_Escudo" AutoReverse="True" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-30"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="-4"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-2.7"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="-2.7"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Burbuja_escudo_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-45"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ala_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="3"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Burbuja_escudo_Completa" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="Herido">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_de_herido" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0.857"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0.424"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0.841"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="1.142"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03" Value="0.954"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.6000000" Value="0.826"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="0.82"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_de_herido" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="-2.5"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="-8.687"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-2.773"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="2.487"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03" Value="-0.8"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.6000000" Value="-3.036"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="-3.13"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_de_herido" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0.4"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03" Value="1.2"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.6000000" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Cabeza_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="0.987"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Cabeza_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="0.107"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Cabeza_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="1.795"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Cabeza_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-3.421"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="-7.63"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_de_herido" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0.817"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_de_herido" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="-0.188"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-17.5"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="-70"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="Cansado">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="-125"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-125"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02.3000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.7000000" Value="-125"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:05" Value="50"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:07" Value="-125"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Ala_Completa" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="3"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.6000000" Value="3"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="3"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:03.7000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:05.7000000" Value="3"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:07" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Nariz" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:05" Value="-0.875"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:07" Value="-0.125"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Nariz" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:05" Value="-1.125"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:07" Value="0.375"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Nariz" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:05" Value="0.641"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:07" Value="0.36"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Nariz" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:05" Value="0.696"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:07" Value="0.493"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_Cansado" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0.543"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="0.986"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:07" Value="1.314"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_Cansado" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="-8"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="-0.25"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:07" Value="2.401"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_Cansado" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0.3"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:07" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetName="Pestaña_Cansado" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                <EasingPointKeyFrame KeyTime="00:00:04" Value="0.5,0.5"/>
+                <EasingPointKeyFrame KeyTime="00:00:07" Value="0.506,0.491"/>
+            </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_Cansado" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:07" Value="-0.494"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_Cansado" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:07" Value="1.03"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="Muerto" FillBehavior="Stop">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="81.991"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="176.44"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="-4"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="812"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="1180"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="-356"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="-288"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pokemon_Completo" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0.65"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_Cansado" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_Cansado" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="1.373"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="1.525"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_Cansado" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="6.539"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="9.191"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_Cansado" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="0.999"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pestaña_Cansado" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="-0.011"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:04" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+
+
+    <Grid Background="Transparent">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!-- Controles de vida y energía -->
+        <Image x:Name="imgCorazon" Grid.Row="0" Grid.Column="0" Source="/AssetsHorseaABH/corazon.png" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+        <Image x:Name="imgRayo" Grid.Row="1" Grid.Column="0" Source="/AssetsHorseaABH/energia.png" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+
+        <ProgressBar x:Name="pbHealth" Grid.Row="0" Grid.Column="1" Minimum="0" Maximum="100" Value="50" Height="50" Margin="1" Foreground="Red" Background="LightPink" Visibility="Collapsed"/>
+        <ProgressBar x:Name="pbEnergy" Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="100" Value="80" Height="50" Margin="1" Foreground="Yellow" Background="LightYellow" Visibility="Collapsed"/>
+
+        <Image x:Name="imgRedPotion" Grid.Column="2" Source="/AssetsHorseaABH/red-potion.png" HorizontalAlignment="Center" Height="39" VerticalAlignment="Center" Width="43" Tapped="imgRedPotion_Tapped" Visibility="Collapsed"/>
+        <Image x:Name="imgYellowPotion" Grid.Column="2" Grid.Row="1" Source="/AssetsHorseaABH/yellow-potion.png" HorizontalAlignment="Center" Height="39" VerticalAlignment="Center" Width="43" Tapped="imgYellowPotion_Tapped" Visibility="Collapsed"/>
+
+
+        <Viewbox Grid.Column="1" Grid.Row="2" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Canvas x:Name="Pokemon_Completo"
+            Width="1030"
+            Height="411"
+            RenderTransformOrigin="0.5,0.5">
+                <Canvas.RenderTransform>
+                    <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
+                </Canvas.RenderTransform>
+
+
+                <!-- Canvas para la CABEZA COMPLETA -->
+                <Canvas x:Name="Cabeza_Completa"
+              HorizontalAlignment="Left"
+              Height="284"
+              Canvas.Left="551" RenderTransformOrigin="0.5,0.5" Canvas.Top="109">
+                    <Canvas.RenderTransform>
+                        <CompositeTransform/>
+                    </Canvas.RenderTransform>
+                    <!-- Cabeza -->
+                    <Path x:Name="Cabeza"
+                Data="M419.35,216.965 L409.10001,220.33 397.46626,223.31925 384.07547,222.64675 374.47872,219.78734 363.26091,215.12756 352.61439,207.41202 346.2015,204.7923 337.16244,203.29552 328.16343,204.02495 303.73474,204.78776 293.07646,201.73653 283.01079,190.67773 280.71263,182.29819 278.1261,172.68621 279.05385,165.73822 285.54809,156.10048 296.88723,156.94308 308.74179,159.49929 325.87501,162.39184 339.10415,162.39184 339.58083,153.37701 344.39138,141.33246 348.30854,135.92007 358.89174,125.79242 385.34975,114.78002 411.60602,113.83519 431.96649,119.56611 445.60904,128.67921 455.2499,121.60951 466.11419,116.53624 469.35006,116.91203 471.56045,119.16682 471.56045,123.6764 464.71823,131.80303 456.07542,140.25849 451.53108,144.50187 445.9064,150.01358 442.06515,153.77156 441.79077,158.28113 444.57551,160.8804 449.53644,161.53805 455.63424,161.53805 463.27313,161.88435 481.16358,161.03699 489.34004,161.03699 498.06333,161.66332 501.43638,163.9181 502.40129,167.42555 500.54096,170.5572 495.44223,171.93513 480.69725,174.56571 469.39737,176.56997 457.82187,178.44896 449.94985,180.21051 444.57551,183.31085 445.19563,188.94782 452.74486,194.11134 457.68407,195.7983 465.26326,199.55628 469.67297,201.93634 474.22049,204.19113 477.25217,206.44591 479.18142,210.20389 479.04361,213.14764 474.7717,215.40243 469.39737,214.65084 460.99135,212.39605 453.27436,210.14126 445.28175,207.88647 442.66349,208.26227 440.45863,210.89286 438.94279,213.02238 437.21163,213.56259 432.044,214.59603 426.35961,215.72343 z"
+                Height="118"
+                Width="218"
+                Fill="#FFABEAFC"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="-112"
+                Canvas.Top="5.333"/>
+                    <!-- Pupila Grande -->
+                    <Path x:Name="Pupila_Grande"
+                Data="M364.83171,180.62898 L367.09999,183.08 372.82755,186.26081 379.50267,188.03883 386.2212,186.02316 393.14683,181.39534 400.36474,171.93401 402.79478,157.80705 402.31326,149.63439 398.32364,139.44206 387.04263,131.99056 381.5397,130.0951 374.66104,131.25398 369.29568,134.60862 364.75577,138.7765 360.61223,147.01061 358.91134,156.15962 358.43137,164.67328 359.19386,170.16269 364.87792,180.63322"
+                Height="58"
+                Width="33"
+                Fill="White"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="-34"
+                Canvas.Top="30.333"/>
+                    <!-- Pupila Pequeña -->
+                    <Path x:Name="Pupila_Pequeña"
+                Data="M366.41875,141.865 L368.86251,140.68001 371.42083,141.14216 373.97659,142.44565 375.95265,145.20888 377.04754,147.76014 378.19162,152.47198 380.51676,161.92768 381.01606,171.24629 380.98564,178.18484 379.03934,189.53381 375.99823,197.77234 369.42945,201.36257 366.57082,200.40422 363.83383,193.89195 361.9622,188.28621 360.92018,177.48176 361.06793,164.03169 362.36825,152.87572 363.13662,148.75005 364.61426,144.55037 z"
+                Height="42"
+                Width="18"
+                Fill="Tomato"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="-34"
+                Canvas.Top="40.333"/>
+                    <!-- Pupila Mini -->
+                    <Path x:Name="Pupila_Mini"
+                Data="M368.43333,154.44 L369.73332,155.155 370.59997,156.30972 370.88886,158.41731 370.76608,160.70316 370.23405,164.48888 369.70201,165.97707 368.31054,166.51066 366.46276,165.97102 364.88905,164.31427 364.28906,161.80546 363.90407,158.42095 364.0787,156.69319 364.60256,155.13702 366.34875,154.1193 z"
+                Height="18"
+                Width="5"
+                Fill="Black"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="-29"
+                Canvas.Top="53.333"/>
+                    <!-- pestaña herido -->
+                    <Path x:Name="Pestaña_de_herido"
+                  Fill="Purple"
+                  Height="35"
+                  Stroke="Black"
+                  Stretch="Fill"
+                  Width="33"
+                  HorizontalAlignment="Center"
+                  Canvas.Left="-33.7"
+                  Canvas.Top="30.333"
+                  VerticalAlignment="Top"
+                  Data="M360.48276,163.36287 L372.43333,161.91333 384.0143,161.91333 393.50737,165.06396 394.35416,154.46991 391.77357,138.30364 386.11748,133.17942 379.33017,128.54627 372.33246,129.813 366.32117,136.18914 361.7963,146.94578 z" Opacity="0" RenderTransformOrigin="0.5,0.5"
+                >
+                        <Path.RenderTransform>
+                            <CompositeTransform/>
+                        </Path.RenderTransform>
+                    </Path>
+                    <!-- Pestaña Cansado -->
+
+                    <Path x:Name="Pestaña_Cansado"
+                        Fill="#FFABEAFC"
+                        Height="35"
+                        Stroke="Black"
+                             Stretch="Fill"
+                         Width="33"
+                        HorizontalAlignment="Center"
+                        Canvas.Left="-33.7"
+                        Canvas.Top="30.333"
+                         VerticalAlignment="Top"
+                         Data="M360.48276,163.36287 L372.43333,161.91333 384.0143,161.91333 393.50737,165.06396 394.35416,154.46991 391.77357,138.30364 386.11748,133.17942 379.33017,128.54627 372.33246,129.813 366.32117,136.18914 361.7963,146.94578 z" Opacity="0" RenderTransformOrigin="0.5,0.5"
+>
+                        <Path.RenderTransform>
+                            <CompositeTransform/>
+                        </Path.RenderTransform>
+                    </Path>
+                    <!-- Nariz -->
+                    <Path x:Name="Nariz"
+                Data="M289.675,159.965 L287.64999,164.43 287.82718,171.75817 289.75093,179.76144 293.29622,186.87165 296.8816,193.8954 299.16064,198.37987 301.20379,200.93898 302.98273,201.35441 303.94102,196.71535 304.13107,191.19676 303.55424,185.5632 301.57651,177.97514 297.84079,167.9727 295.20382,162.91399 z"
+                Height="37"
+                Width="16"
+                Fill="Black"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="-108"
+                Canvas.Top="59.333" RenderTransformOrigin="0.5,0.5">
+                        <Path.RenderTransform>
+                            <CompositeTransform/>
+                        </Path.RenderTransform>
+                    </Path>
+                    <!-- Parte de la Cabeza -->
+                    <Path x:Name="Parte_Cabeza"
+                Data="M453.07143,191.72191 L455.14999,186.50499 456.61562,180.94563 458.22843,173.59395 453.07226,174.1601 449.50375,175.1703 446.5565,177.3412 445.08609,178.7696 444.47643,182.52688 444.92359,185.71962 446.54485,186.81996 z"
+                Height="18"
+                Width="18"
+                Fill="#FFABEAFC"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="48"
+                Canvas.Top="74.333"/>
+                    <!-- Parte Cabeza 2 -->
+                    <Path x:Name="Parte_Cabeza2"
+                Data="M455.28333,136.27333 L456.93333,138.91333 457.90957,141.41253 459.29565,144.47322 460.35223,149.75395 460.67608,152.42761 461.02062,154.27544 452.39874,154.27544 448.80629,154.19543 445.03239,153.45248 442.75954,151.10935 442.75954,146.99458 447.86945,142.07972 454.78944,135.67898 z"
+                Height="23"
+                Width="20"
+                Fill="#FFABEAFC"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="47"
+                Canvas.Top="34.333"/>
+                    <!-- Parte Cabeza 3 -->
+                    <Path x:Name="Parte_Cabeza3"
+                Data="M445.36363,121.66123 L441.74899,125.34335 437.48218,128.84936 434.51585,131.31903"
+                Height="10"
+                Width="13"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="38"
+                Canvas.Top="21.333"/>
+                </Canvas>
+
+                <!-- Canvas para el CUERPO COMPLETO -->
+                <Canvas x:Name="Cuerpo_completo"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top" Canvas.Left="196" Canvas.Top="109">
+                    <Path x:Name="Cuerpo"
+                Data="M396.69253,227.46164 L396.52938,232.80428 395.02225,237.18525 394.35241,239.32231 392.76154,242.31419 390.33337,247.22943 387.53243,250.17105 382.98741,256.55509 377.07255,262.2588 367.22307,271.2409 360.42645,281.60298 356.28604,287.23819 352.90612,301.30769 352.98874,303.20556 345.27793,300.54564 336.40476,300.83012 326.13656,304.17281 315.81603,312.09964 310.89675,320.74914 309.20306,326.68952 307.17553,338.1843 306.64569,345.78583 308.67452,353.89441 313.51037,365.19899 320.95869,375.34209 339.41274,387.16198 351.53015,389.83071 364.42575,388.76583 390.7311,376.67601 410.58865,359.26175 423.2004,341.19731 432.72589,306.73507 435.18612,277.95421 432.94704,264.86276 430.84616,251.57802 427.58427,236.99292 426.53384,231.36974 426.47855,225.67628 427.14136,221.18648 427.19727,220.80777 427.63956,218.33017 427.8607,216.40824 412.657,221.49529 z"
+                Height="166"
+                Width="156"
+                Fill="#FFABEAFF"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="251.2"
+                Canvas.Top="112.533"/>
+                    <Path x:Name="Barriga"
+                Data="M406.94328,219.01453 L407.31587,229.43354 407.17962,238.19392 406.77087,246.81523 406.08961,259.67769 404.04584,270.35004 397.91453,286.86265 392.19197,296.14447 385.78816,303.65337 380.20186,308.65929 374.4793,312.20516 364.80545,317.90635 361.18952,320.22854 356.71155,307.76644 349.85346,301.33305 342.3151,296.55988 341.26804,294.1733 343.18407,287.53238 345.33003,279.87976 354.32262,270.33343 360.6583,263.09586 376.39533,251.21484 382.62883,244.98897 387.3295,240.42334 391.81497,232.40408 394.57406,224.51798 394.62352,222.70412 401.11752,220.67446 404.77556,219.59551 z"
+                Height="99"
+                Width="66"
+                Fill="#FFF9ECB8"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="307.2"
+                Canvas.Top="119.533"/>
+                    <Path x:Name="Parte_barriga"
+                Data="M386.53333,305.19 L378.63333,299.01334 370.43709,292.99795 365.64173,290.10912 360.30276,286.64723 355.15754,284.19892 349.31814,283.1811"
+                Height="22"
+                Width="38"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="309.2"
+                Canvas.Top="184.533"/>
+                    <Path x:Name="Parte_barriga2"
+                Data="M401.4,287.49 L395.43333,280.47999 389.3009,273.99405 380.12576,267.01076 372.46029,264.3553 366.04662,263.09469"
+                Height="25"
+                Width="37"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="325.2"
+                Canvas.Top="163.533"/>
+                    <Path x:Name="Parte_barriga3"
+                Data="M409.66667,268.90667 L403.43332,261.78001 397.30387,255.6782 390.74472,250.3936 382.7423,247.19833"
+                Height="22"
+                Width="26"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="344.2"
+                Canvas.Top="148.533"/>
+                    <Path x:Name="Parte_barriga4"
+                Data="M411.77813,244.10539 L407.70166,239.65216 400.99035,236.62117 394.54864,235.09353"
+                Height="11"
+                Width="18"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="354.2"
+                Canvas.Top="137.053"/>
+                    <Path x:Name="Parte_barriga5"
+                Data="M400.2339,227.08129 L406.36666,228.31334 411.42556,227.44227 413.58694,226.12627"
+                Height="3"
+                Width="14"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="359.2"
+                Canvas.Top="126.533"/>
+                    <Path x:Name="parte_cuerpo"
+                Data="M367.11062,316.71405 L366.40001,324.78001 365.04379,335.42958 360.72079,345.18333 354.6844,350.34146 348.38322,351.44391 340.15791,348.93897 334.92859,342.99504 333.64442,334.92827 334.11885,326.64923 337.33044,319.64388 342.14782,316.67192 346.52726,316.67192 350.46875,319.24293 352.36651,323.45771 352.51249,326.82955 352.36651,329.7799"
+                Height="34"
+                Width="47"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="280.2"
+                Canvas.Top="217.533"/>
+                </Canvas>
+
+                <!-- Canvas para el ALA COMPLETA -->
+                <Canvas x:Name="Ala_Completa"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Canvas.Left="196" Canvas.Top="109" Height="372" Width="651">
+                    <Canvas.RenderTransform>
+                        <CompositeTransform/>
+                    </Canvas.RenderTransform>
+                    <Path x:Name="Ala"
+                Data="M442.69297,246.27361 L448.05963,238.94694 457.65552,230.056 466.16434,223.87896 483.47043,212.18692 502.93977,206.56751 518.37103,206.90737 528.61182,208.27253 535.53361,216.98425 536.79482,226.16953 532.62591,240.59083 525.95569,250.30022 517.5454,260.00822 506.38003,267.35993 488.54443,270.90343 472.7389,269.41664 461.42852,267.54917 453.01824,264.10152 447.21805,260.65387 445.18798,259.36101 443.59563,251.00846 z"
+                Height="60"
+                Width="88"
+                Fill="#FFF9ECB8"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="401.2"
+                Canvas.Top="110.8"/>
+                    <Path x:Name="Parte_ala1"
+                Data="M443.63533,250.96771 L471.24782,237.01219 494.49084,229.2715 509.37681,226.05095 523.19119,222.97668"
+                Height="29"
+                Width="81"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="402.2"
+                Canvas.Top="123.8"/>
+                    <Path x:Name="Parte_ala2"
+                Data="M444.39323,254.78183 L465.83333,253.04667 480.98335,252.96765 494.60962,252.64863 508.65606,253.66643"
+                Height="3"
+                Width="66"
+                Stroke="Black"
+                Stretch="Fill"
+                Canvas.Left="403.2"
+                Canvas.Top="153.8"/>
+                </Canvas>
+
+            </Canvas>
+        </Viewbox>
+
+        <Canvas x:Name="Burbuja_Pequeña_Completa" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Opacity="0">
+            <Canvas.RenderTransform>
+                <CompositeTransform ScaleX="2" ScaleY="2"/>
+            </Canvas.RenderTransform>
+            <Ellipse x:Name="burbuja" 
+       Fill="AliceBlue" 
+       Height="48" 
+       Stroke="Black" 
+       Width="48" 
+       HorizontalAlignment="Left" 
+       VerticalAlignment="Top" 
+       Canvas.Left="237" 
+       Canvas.Top="42" Opacity="1" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <CompositeTransform/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Path x:Name="Parte_burbuja1" 
+    Height="13" 
+    Stroke="Black" 
+    Stretch="Fill" 
+    Width="15" 
+    HorizontalAlignment="Left" 
+    Canvas.Left="243.467" 
+    Canvas.Top="45.05" 
+    VerticalAlignment="Top"
+    Data="M685.87698,123.00729 L681.27371,126.66209 679.03601,131.00327 679.10138,135.02226 680.01658,136.98896 682.17385,136.34196 684.91945,134.7542 688.05729,132.2138 691.93313,127.92686 692.46222,124.51319 690.73599,122.36973 z" UseLayoutRounding="False" Opacity="1" RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <CompositeTransform/>
+                </Path.RenderTransform>
+            </Path>
+            <Path x:Name="Parte_burbuja2" 
+    Height="8" 
+    Stroke="Black" 
+    Stretch="Fill" 
+    Width="6" 
+    HorizontalAlignment="Left" 
+    Canvas.Left="240.467" 
+    Canvas.Top="57.05" 
+    VerticalAlignment="Top"
+    Data="M680.3,135.82333 L678.58444,135.5335 677.07381,136.32796 675.90775,137.85501 675.39535,139.51077 675.47707,140.62437 676.53975,141.78561 678.58336,142.03149 680.29999,140.82987 681.68964,137.91687 z" UseLayoutRounding="False" Opacity="1" RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <CompositeTransform/>
+                </Path.RenderTransform>
+            </Path>
+        </Canvas>
+        <Canvas x:Name="Burbuja_Grande_Completa" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Opacity="0" RenderTransformOrigin="0.5,0.5">
+            <Canvas.RenderTransform>
+                <CompositeTransform/>
+            </Canvas.RenderTransform>
+            <Ellipse x:Name="Burbuja_Grande" 
+       Fill="#FF4D50D7" 
+       Height="147" 
+       Stroke="Black" 
+       Width="144" 
+       HorizontalAlignment="Left" 
+       VerticalAlignment="Top" Canvas.Left="1056" Canvas.Top="62" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <CompositeTransform/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Ellipse x:Name="Bubuja_part1" 
+       Fill="Aqua" 
+       Height="37" 
+       Stroke="Black" 
+       Width="18" 
+       RenderTransformOrigin="0.5,0.5" 
+       HorizontalAlignment="Left" 
+       Canvas.Left="1074.62" 
+       Canvas.Top="79.221" 
+       VerticalAlignment="Top" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Ellipse.RenderTransform>
+                    <CompositeTransform Rotation="-144.108" SkewY="0" ScaleX="1.008" ScaleY="0.992" SkewX="1.304"/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Ellipse x:Name="Burbuja_part2" 
+       Fill="Aqua" 
+       Height="12" 
+       Stroke="Black" 
+       Width="13" 
+       HorizontalAlignment="Left" 
+       Canvas.Left="1065" 
+       Canvas.Top="117" 
+       VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <CompositeTransform/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+        </Canvas>
+        <Canvas x:Name="Burbuja_escudo_Completa" Grid.Column="1" HorizontalAlignment="Left" Margin="164,0,0,0" Grid.Row="2" VerticalAlignment="Center" FocusVisualPrimaryBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" Opacity="0">
+            <Canvas.RenderTransform>
+                <CompositeTransform/>
+            </Canvas.RenderTransform>
+            <Ellipse x:Name="Burbuja_escudo" Height="439" Stroke="Black" Width="371" StrokeThickness="5"  HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="298" Canvas.Top="-218" FocusVisualPrimaryBrush="{x:Null}"/>
+            <Ellipse x:Name="Burbuja_escudo2" Height="371" Stroke="Black" Width="278" HorizontalAlignment="Left" Canvas.Left="340" Canvas.Top="-183" VerticalAlignment="Top" FocusVisualPrimaryBrush="{x:Null}"/>
+        </Canvas>
+
+        <TextBlock x:Name="Nombre_Pokemon" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="POKEMON HORSEA" VerticalAlignment="Top" Height="29" FontSize="22" FontWeight="Bold" TextAlignment="Center" Margin="69,7,35,0" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+            <TextBlock.RenderTransform>
+                <CompositeTransform ScaleY="1"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+
+
+    </Grid>
+</UserControl>
+        

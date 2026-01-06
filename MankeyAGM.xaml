@@ -1,0 +1,498 @@
+﻿<UserControl
+    x:Class="ProyectoUWPenBlanco.MankeyAGM"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProyectoUWPenBlanco"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <UserControl.Resources>
+
+        <Storyboard x:Name="AnimacionIdleMankey" RepeatBehavior="Forever" AutoReverse="True">
+            <!-- Movimiento vertical suave -->
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].Y"
+                 From="0" To="-5"
+                 Duration="0:0:1" />
+        </Storyboard>
+
+        <!-- Storyboard para la animación de defensa -->
+        <Storyboard x:Name="AnimacionDefensaMankey">
+            <!-- Mostrar el escudo -->
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Escudo_Mankey"
+                               Storyboard.TargetProperty="Visibility">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+
+            <!-- Temblor leve del cuerpo completo -->
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].X"
+                 From="0" To="6" Duration="0:0:0.1" AutoReverse="True" RepeatBehavior="3x" />
+
+            <!-- Encogerse ligeramente (defensivo) -->
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].ScaleY"
+                 To="0.85" Duration="0:0:0.3" AutoReverse="True" />
+
+            <!-- Color opcional del cuerpo (solo si quieres mantenerlo) -->
+            <ColorAnimation Storyboard.TargetName="Cuerpo_Mankey"
+                Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                To="DarkSlateGray" Duration="0:0:0.2" AutoReverse="True" />
+        </Storyboard>
+
+        <!-- Storyboard para la animación de herido -->
+        <Storyboard x:Name="AnimacionHeridoMankey">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Contenedor_Mankey"
+                               Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].X">
+                <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.05" Value="-20"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.1" Value="10"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.15" Value="-6"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="4"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.25" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <ColorAnimation Storyboard.TargetName="Cuerpo_Mankey"
+                Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                To="IndianRed" Duration="0:0:0.2" AutoReverse="True" />
+
+        </Storyboard>
+
+        <!-- Storyboard para la animación de curación -->
+        <Storyboard x:Name="AnimacionCuracionMankey">
+            <!-- Brillo (aumenta Opacidad y vuelve) -->
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="Opacity"
+                 From="1" To="0.4"
+                 Duration="0:0:0.1"
+                 AutoReverse="True"
+                 RepeatBehavior="2x"/>
+        </Storyboard>
+
+        <!-- Storyboard para la animación de ENERGÍA -->
+        <Storyboard x:Name="AnimacionEnergiaMankey">
+            <!-- Brillo general -->
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="Opacity"
+                 From="1" To="0.4"
+                 Duration="0:0:0.1"
+                 AutoReverse="True"
+                 RepeatBehavior="2x"/>
+
+            <!-- Color amarillo temporal en el cuerpo -->
+            <ColorAnimation Storyboard.TargetName="Cuerpo_Mankey"
+                Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                To="Goldenrod"
+                Duration="0:0:0.2"
+                AutoReverse="True"/>
+        </Storyboard>
+
+        <!-- Storyboard para la animación de KO -->
+        <Storyboard x:Name="AnimacionKO_Mankey">
+            <!-- Pequeño temblor antes de caer -->
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].Y"
+                 From="0" To="20"
+                 Duration="0:0:0.1"
+                 AutoReverse="True"
+                 RepeatBehavior="3x"/>
+
+            <!-- Caída del cuerpo -->
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].Y"
+                 To="100"
+                 Duration="0:0:0.3" />
+        </Storyboard>
+
+        <!-- Storyboard para la animación de ataque débil -->
+        <Storyboard x:Name="AnimacionAtaqueFlojoMankey">
+            <!-- Impulso leve hacia adelante -->
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].X"
+                 To="20" Duration="0:0:0.15" AutoReverse="True"/>
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].Y"
+                 To="-10" Duration="0:0:0.15" AutoReverse="True"/>
+
+            <!-- Latigazo leve de la cola -->
+            <DoubleAnimation Storyboard.TargetName="ColaRotate"
+                 Storyboard.TargetProperty="Angle"
+                 From="0" To="45"
+                 Duration="0:0:0.2"
+                 AutoReverse="True"/>
+        </Storyboard>
+
+        <!-- Storyboard para la animación de ataque fuerte -->
+        <Storyboard x:Name="AnimacionAtaqueFuerteMankey">
+            <!-- Impulso -->
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].X"
+                 To="50" Duration="0:0:0.15" AutoReverse="True"/>
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].Y"
+                 To="-30" Duration="0:0:0.15" AutoReverse="True"/>
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].Angle"
+                 To="20" Duration="0:0:0.15" AutoReverse="True"/>
+
+            <!-- Brillo cuerpo -->
+            <DoubleAnimation Storyboard.TargetName="Cuerpo_Mankey"
+                 Storyboard.TargetProperty="Opacity"
+                 From="1" To="0.4"
+                 Duration="0:0:0.1"
+                 AutoReverse="True"
+                 RepeatBehavior="2x"/>
+
+            <!-- Latigazo doble -->
+            <DoubleAnimation Storyboard.TargetName="ColaRotate"
+                 Storyboard.TargetProperty="Angle"
+                 From="0" To="100"
+                 Duration="0:0:0.2"
+                 AutoReverse="True"
+                 RepeatBehavior="2x"/>
+        </Storyboard>
+
+
+        <!-- Storyboard para la animación de descansar -->
+        <Storyboard x:Name="AnimacionDescansarMankey">
+            <!-- Movimiento leve del cuerpo hacia abajo -->
+            <DoubleAnimation Storyboard.TargetName="Contenedor_Mankey"
+                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].Y"
+                 To="25" Duration="0:0:0.3" AutoReverse="True" RepeatBehavior="2x"/>
+
+            <!-- Oscurecer el color del cuerpo (simulando agotamiento) -->
+            <ColorAnimation Storyboard.TargetName="Cuerpo_Mankey"
+                Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                To="LightGray" Duration="0:0:0.3" AutoReverse="True" RepeatBehavior="2x"/>
+
+            <!-- Zzz sube un poco -->
+            <DoubleAnimation Storyboard.TargetName="IconoZzz"
+                 Storyboard.TargetProperty="(Canvas.Top)"
+                 From="120" To="105"
+                 Duration="0:0:0.4" AutoReverse="True" RepeatBehavior="2x"/>
+
+            <!-- Zzz parpadea -->
+            <DoubleAnimation Storyboard.TargetName="IconoZzz"
+                 Storyboard.TargetProperty="Opacity"
+                 From="0.9" To="0.2"
+                 Duration="0:0:0.4" AutoReverse="True" RepeatBehavior="2x"/>
+        </Storyboard>
+
+    </UserControl.Resources>
+
+    <!-- Grid layout con 3 columnas y 4 filas -->
+    <Grid x:Name="MainGrid">
+
+
+        <!-- Definición de columnas -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="21*"/>
+            <ColumnDefinition Width="257*"/>
+            <ColumnDefinition Width="21*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Definición de filas -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+
+        <!-- Imagen de fondo con la imagen del Pokémon, cubriendo toda la página -->
+        <Image x:Name="Fondo_mankey" 
+            Grid.Column="0" 
+            Grid.Row="0" 
+            Grid.RowSpan="4" 
+            Grid.ColumnSpan="4" 
+            Source="ms-appx:///AssetsMankeyAGM/Fondo_mankey.jpg" 
+            Stretch="UniformToFill" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"/>
+
+        <!-- Imagen del corazón para bajar la vida -->
+        <Image x:Name="iconoCorazon"
+           Source="/AssetsMankeyAGM/corazon.png"
+           Width="70" Height="70"
+           Grid.Row="0" Grid.Column="0"
+           HorizontalAlignment="Right"
+           VerticalAlignment="Center"
+            Visibility="Collapsed"/>
+
+        <!-- Barra de progreso superior  -->
+        <ProgressBar x:Name="ProgressBarVida"
+             Grid.Row="0" Grid.Column="1"
+             Margin="5,5,5,5"
+             VerticalAlignment="Stretch"
+             Background="#4CE60A0A"
+             Foreground="#FFE60A0A"
+             Value="100" Visibility="Collapsed"/>
+
+        <!-- Pócima roja (aumenta vida) -->
+        <Image x:Name="pocimaVida"
+           Source="/AssetsMankeyAGM/red-potion.png"
+           Width="70" Height="70"
+           Grid.Row="0" Grid.Column="2"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Center"
+            Visibility="Collapsed"/>
+
+        <!-- Rayo (resta energía) -->
+        <Image x:Name="iconoEnergia"
+           Source="/AssetsMankeyAGM/energia.png"
+           Width="70" Height="70"
+           Grid.Row="1" Grid.Column="0"
+           HorizontalAlignment="Right"
+           VerticalAlignment="Center"
+           Visibility="Collapsed"/>
+
+        <!-- Barra de progreso inferior, puede estar oculta al principio (d:IsHidden="True") -->
+        <ProgressBar x:Name="ProgressBarEner" Grid.Row="1" Grid.Column="1" Margin="5,5,5,5" VerticalAlignment="Stretch" Background="#4CFFF000" Foreground="#FFFFF900" Value="100" d:IsHidden="False" Visibility="Collapsed"/>
+
+        <!-- Pócima amarilla (aumenta energía) -->
+        <Image x:Name="pocimaEnergia"
+           Source="/AssetsMankeyAGM/yellow-potion.png"
+           Width="70" Height="70"
+           Grid.Row="1" Grid.Column="2"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Center"
+            Visibility="Collapsed"/>
+
+
+
+        <!-- Canvas que contiene los elementos del MANKEY) -->
+        <Canvas x:Name="MANKEY" Grid.Column="1" Grid.Row="2" Width="400" Height="285" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+            <!-- Cola de Mankey -->
+            <Path x:Name="Cola" Data="M491.22222,295.44741 492.22222,296.44741 C491.22222,296.44741 535.3889,307.65408 614.7963,275.65408 614.7963,275.654 660.14,248.08342 656.77782,230.71103 656.77782,230.71103 651.67437,227.10257 633.93441,240.16881 633.93441,240.16881 616.78578,254.10203 603.77647,253.22498 590.76716,252.34792 625.36009,219.60456 620.9251,227.2057 620.9251,227.2057 653.44837,206.72142 664.09234,213.17538 674.73632,219.62933 665.22113,213.77856 665.22113,213.77856 665.22113,213.77856 688.66199,209.36351 675.63134,247.33295 675.63134,247.33295 671.91189,264.69881 619.0729,290.3061 619.0729,290.3061 577.9682,311.26681 505.39469,312.0755 504.99497,312.07995 504.59428,312.0838 504.19265,312.08702 z"
+                  Fill="#FF8F7367"
+                  Stroke="Black"
+                  StrokeThickness="1"
+                  Width="103"
+                  Height="69"
+                  Canvas.Left="243"
+                  Canvas.Top="132"
+                  Stretch="Fill"
+                  UseLayoutRounding="False"
+                  RenderTransformOrigin="0.1,0.6">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform x:Name="ColaRotate" Angle="0"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+
+            <Canvas x:Name="Contenedor_Mankey" Canvas.Left="0" Canvas.Top="0" RenderTransformOrigin="0.5,0.5">
+
+                <Canvas.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="0.4" ScaleY="0.4"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="150" Y="100"/>
+                    </TransformGroup>
+                </Canvas.RenderTransform>
+
+
+
+
+
+                <!-- Cuerpo de Mankey -->
+                <Path x:Name="Cuerpo_Mankey" Data="M229.44667,99.406786 230.44667,100.406786 L179.843,130.24669 228.38202,130.51999 228.38451,130.50656 C228.56546,129.4886 228.73248,128.45992 228.88521,127.42114 L228.89807,127.32892 229.843,104.21526 229.75648,102.89083 C229.67769,101.80615 229.58362,100.72978 229.47467,99.662431 z M106.87363,99.220285 L106.84184,99.475473 C106.71701,100.54106 106.60693,101.61589 106.512,102.6993 L106.40578,104.02226 107.00655,127.14753 107.01804,127.23994 C107.15529,128.28085 107.30698,129.31195 107.47276,130.33251 L107.47504,130.34596 156.01271,130.80052 z M192.15388,0.5 L192.15388,10.758187 194.257,10.969418 194.39423,10.98878 205.49377,7.9072893 205.82446,12.973475 208.21605,13.508958 C215.77226,15.360909 222.97589,17.929754 229.72058,21.124273 L232.28429,22.403316 261.47363,12.114685 257.40643,19.604385 271.69125,19.604385 262.92944,26.31784 261.25998,44.150442 263.83057,47.069582 C273.69434,58.800573 280.30737,72.676676 282.53735,87.72648 L282.647,88.549112 320.24515,87.275873 321.6857,77.829218 355.5,82.009836 351.05371,111.30815 351.04318,111.33184 C349.12039,115.15976 343.91251,118.81162 337.25021,120.54801 335.98123,120.87873 334.72516,121.12287 333.49881,121.28471 L333.22055,121.3189 333.19986,121.40957 333.18744,121.53881 277.9877,121.53881 275.91461,132.01425 276.01373,132.01425 275.84631,132.35932 275.78891,132.64942 276.01373,132.64942 275.83322,133.02329 279.1557,134.05322 274.70667,135.35678 274.6911,135.38904 273.82544,137.0302 282.44299,142.98772 268.90918,145.07781 268.23572,146.05773 267.69635,146.79659 271.46262,152.3534 265.53876,149.6573 265.21237,150.07894 C262.75598,153.16203 260.08115,156.10565 257.20703,158.89321 L255.55394,160.43108 255.62654,160.45912 281.5108,192.90471 C286.28171,195.5642 282.93546,206.73398 282.93546,206.73398 279.76196,217.90378 280.78674,227.47789 280.78674,227.47789 L260.43799,231.5 C264.11993,226.67935 245.87453,219.74932 245.87453,219.74932 L242.07684,211.73953 234.4808,204.35947 224.38197,197.45308 219.40482,191.71057 214.31212,190.52997 209.38371,188.61598 208.42616,186.87444 205.66393,191.56098 198.80287,187.40033 198.43578,187.45419 195.92328,194.31833 186.08102,188.73972 183.63847,188.85843 183.35677,188.86299 180.28998,193.92442 168.07843,188.80359 163.24847,196.74088 157.66457,186.9018 157.45349,186.86543 155.90263,186.54863 153.90308,188.62212 150.49045,185.33215 150.3902,185.3084 148.70786,184.85439 145.75249,191.57965 134.89127,181.32271 132.73625,185.91863 130.0425,179.01491 129.9575,177.98934 128.47116,177.26906 127.93084,179.78353 120.79064,180.90851 114.80613,182.8206 105.65251,184.67626 96.471458,188.68797 95.929863,194.59094 81.529762,200.34906 79.916161,197.57404 75.115013,195.48483 68.737595,195.48483 65.289063,193.9139 65.276909,193.91963 61.975338,194.20467 60.326092,191.35816 56.431454,186.60575 56.208313,185.84636 55.045479,184.35921 55.422722,183.17285 54.282795,179.29353 C54.282795,179.29353 49.978603,171.27202 61.27803,169.13304 L77.891495,160.00353 94.731712,150.79463 93.98687,149.88957 89.09214,149.43201 89.09214,143.18654 84.315193,144.06449 85.111687,137.11521 73.169334,137.11521 82.676765,129.98184 82.656883,129.10854 80.08725,127.37432 82.215836,124.41651 76.894371,122.25121 82.436394,119.42726 82.312904,114.00499 14.30365,90.239832 14.269287,90.055078 14.26515,90.036028 14.169646,90.002298 C10.086838,88.479784 6.0063477,83.039018 4.0541067,75.889353 3.7054901,74.612627 3.4427948,73.347498 3.2620113,72.111063 L3.2234795,71.830454 3.133424,71.81106 3.072479,71.806123 0.5,57.614763 0.54838681,57.605829 0.5,57.340238 30.035093,51.913595 32.368515,64.724336 77.928627,81.072222 77.983185,80.78985 C78.096893,80.218561 78.175995,79.866998 78.175995,79.866998 L78.175995,80.769823 78.687714,78.764566 C81.885666,67.005533 87.802238,56.142847 95.838005,46.690748 L96.148979,46.340597 94.53447,44.827623 93.750694,44.093134 92.189888,39.58597 90.629059,35.078779 88.805801,27.254249 88.259171,24.908359 85.962173,15.727986 88.382324,16.861566 91.924118,18.520494 91.924126,10.142986 97.110252,12.318198 98.631325,12.956167 106.08376,17.644817 107.06166,18.260055 113.53621,22.333452 115.92596,23.740049 118.3157,25.146658 119.75897,26.458641 120.66662,25.894314 C126.64852,22.336828 133.08772,19.305403 139.8933,16.878023 L143.86488,15.546679 147.53314,7.3397295 150.52771,13.227121 160.13812,4.6631505 162.15244,11.374468 164.71396,11.031697 z"
+                       Fill="#FFF8EADD" 
+                      HorizontalAlignment="Left" 
+                      Height="373" 
+                      Canvas.Left="-138.95" 
+                      Stroke="Black" 
+                      Stretch="Fill" 
+                      Canvas.Top="-69.29" 
+                      VerticalAlignment="Top" 
+                      Width="535" 
+                      UseLayoutRounding="False">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <!-- Pezuña derecha de Mankey -->
+                <Path x:Name="Pezuña_der" Fill="#FFC7A582" Height="107" Canvas.Left="-101.085" Stroke="Black" Stretch="Fill" Canvas.Top="229.535" Width="154" Data="M88.675484,0.50046742 89.675484,1.50046742 C94.800805,0.56645221 100.45513,7.5967798 100.45513,7.5967798 107.92417,14.011682 92.529274,17.21914 92.529274,17.21914 90.4058,11.338799 84.111702,19.892022 84.111702,19.892022 L70.240059,39.671319 53.250527,51.966577 C57.497902,64.79638 45.817605,66.229852 45.817605,66.229852 36.260994,68.920922 36.260994,50.621575 36.260994,50.621575 L39.446526,44.701165 C39.446526,44.701165 39.446526,44.162957 40.50837,41.471887 41.570214,38.780816 19.271447,42.290338 19.271447,42.290338 13.431298,55.6307 11.307602,52.395318 11.307602,52.395318 L0.69053274,45.363854 C-1.4485431,38.985253 15.129311,29.317376 15.129311,29.317376 53.69423,27.681024 54.229523,17.487756 54.229523,17.487756 L57.079709,12.650369 56.810555,12.467372 60.094311,7.6851859 63.079136,5.8193264 65.324952,3.8539288 70.84343,4.8397017 71.62333,4.4076624 75.890007,4.9410033 84.423333,1.7394183 C85.823334,0.8408947 87.261948,0.48523986 88.675484,0.50046742 z"      
+                        HorizontalAlignment="Left" RenderTransformOrigin="0.574,0.495" VerticalAlignment="Top" UseLayoutRounding="False">
+                    <Path.RenderTransform>
+                        <CompositeTransform Rotation="-0.50" SkewX="0" TranslateX="-0.22" TranslateY="-0.084" SkewY="-0.072"/>
+                    </Path.RenderTransform>
+                </Path>
+
+                <!-- Pezuña izquierda de Mankey -->
+                <Path x:Name="Pezuña_izq" Data="M31.203502,1.5 L33.09976,1.80572021 38.278005,3.3363741 38.179685,3.5765311 40.266672,13.010198 C35.999979,19.438909 66.933328,44.082525 66.933328,44.082525 76.000009,41.403875 78.228067,58.547216 78.228067,58.547216 87.773477,69.261816 64.287332,83.190801 62.153299,63.904546 60.019266,44.61823 29.509226,51.047002 29.509226,51.047002 15.419931,55.33283 25.885294,74.297887 25.885294,74.297887 16.811685,86.123418 7.3774812,73.552038 7.3774807,73.552038 -2.1048796,55.87174 2.7350557,50.239477 2.7350553,50.239477 11.117258,45.925268 14.410349,36.346502 14.410349,36.346502 5.7175081,21.172918 20.514505,17.169561 20.514505,17.169561 L19.555734,10.0569512 17.866647,6.3737236 18.491255,6.2810596 20.07518,3.4219571 25.017196,3.4219571 z" Fill="#FFC7A582" Height="127" Stroke="Black" Stretch="Fill" Width="120" HorizontalAlignment="Left" Canvas.Left="227.892" Canvas.Top="291.624" VerticalAlignment="Top" UseLayoutRounding="False"/>
+
+                <Path Data="M99.333333,128.32" Fill="#FFF4F4F5" Height="1" Canvas.Left="-20.956" Stroke="Black" Stretch="Fill" Canvas.Top="66.015" Width="1" UseLayoutRounding="False"/>
+
+                <!-- Mano izquierda de Mankey -->
+                <Path x:Name="Mano_izq" Fill="#FFC7A582" Stroke="Black" Stretch="Fill" Canvas.Top="-66.041" Height="128" Canvas.Left="333.663" Width="133" Data="M55.023952,0.50137579 C72.5028,0.64134401 74.537514,11.414253 74.537514,11.414253 L77.89373,26.242536 78.002083,26.575369 C79.217209,30.325149 80.006615,33.08345 80.006615,33.08345 L83.669937,36.43724 84.809006,39.531338 85.81163,40.536991 88.302025,41.492477 C89.978172,51.623714 80.45974,53.731441 80.45974,53.731441 L78.194977,55.494438 80.980865,49.395645 78.483772,45.42329 76.461456,43.728164 74.076782,37.499992 78.191757,55.496952 76.748238,56.620647 C76.748238,56.620647 73.549904,57.49583 71.51226,60.558956 69.920303,62.952011 61.850239,61.071747 58.395763,60.13462 L58.073929,60.046215 59.303116,57.654358 61.482994,53.529232 60.562798,48.755916 59.804306,42.868656 58.900406,38.499996 57.865379,59.988216 57.826202,59.977253 C57.196854,59.800113 56.823116,59.683773 56.823116,59.683773 L53.388069,61.434124 C45.153942,63.622066 39.903797,60.558956 39.903797,60.558956 L37.752644,59.556019 39.75037,28.500004 39.062508,35.684402 38.611786,40.391914 38.441723,46.589718 37.499634,52.560081 37.20084,55.68079 37.587898,59.47921 36.182377,58.82391 34.94025,62.774608 34.5312,67.046966 34.192497,70.584534 33.812302,74.555496 33.338898,79.5 30.287121,78.703468 27.650625,78.534027 27.57785,77.996338 24.183756,77.110466 22.40099,78.784538 21.424242,76.39022 14.955989,74.701973 14.677117,74.760711 11.401217,79.345466 9.6674032,73.52108 7.0565615,75.97789 5.3147864,72.632591 3.6012385,73.71833 0.9108991,71.726662 1.741922,71.253044 0.5,70.928894 9.48067,58.484447 19.104572,43.817779 25.313543,33.151123 31.611122,22.484451 34.110077,16.706665 38.101059,8.3750284 C38.128227,3.5399953 42.134159,1.9538508 46.195675,1.58975 L46.931362,1.5389528 46.548363,1.1547937 C49.714809,0.67838377 52.526978,0.4813804 55.023952,0.50137579 z"
+                        HorizontalAlignment="Left" RenderTransformOrigin="0.754574985402296,0.268750077909781" VerticalAlignment="Top" UseLayoutRounding="False">
+                    <Path.RenderTransform>
+                        <CompositeTransform Rotation="-3.908" SkewX="4.607" TranslateX="-1.905" ScaleX="1" ScaleY="1"/>
+                    </Path.RenderTransform>
+                </Path>
+
+                <!-- Mano derecha de Mankey -->
+                <Path x:Name="Mano_der" Fill="#FFC7A582" Stroke="Black" Stretch="Fill" Canvas.Top="-104.042" Canvas.Left="-244.456" Width="119"
+                        Data="M49.828048,1.50137573 C65.320663,1.64134455 67.124153,12.414254 67.124153,12.414254 L70.098983,27.242537 70.19503,27.575369 C71.272071,31.32515 71.971771,34.083451 71.971771,34.083451 L75.218803,37.437241 76.228439,40.531338 77.117126,41.536991 79.324523,42.492478 C80.810203,52.623715 72.373405,54.731442 72.373405,54.731442 L70.366004,56.494439 72.835311,50.395645 70.621978,46.423291 68.829467,44.728165 66.715782,38.499993 70.363143,56.496952 69.083663,57.620648 C69.083663,57.620648 66.248771,58.495831 64.442684,61.558957 63.031631,63.952011 55.878616,62.071747 52.816699,61.134621 L52.531436,61.046215 53.620944,58.654358 55.553108,54.529232 54.737476,49.755917 54.065177,43.868657 53.263996,39.499997 52.346584,60.988217 52.311859,59.977253 C51.754028,59.800114 51.422763,59.683773 51.422763,59.683773 L48.378059,61.434124 C41.079631,63.622067 36.42609,60.558957 36.42609,60.558957 L34.519386,59.556019 36.2901,29.500004 35.680404,36.684403 35.280899,41.391915 35.130161,47.589718 34.295127,53.560082 34.030288,56.68079 34.373363,60.47921 33.127559,59.82391 32.026582,63.774609 31.664014,68.046967 31.363801,71.584534 31.026811,75.555497 30.607202,80.5 28.953641,79.013085 29.159486,80.002129 26.726274,82.911606 25.501186,78.847252 22.114334,81.419518 22.448118,77.09742 21.563238,76.836853 17.653068,82.123505 17.056709,77.575737 12.08563,78.076142 10.6060528,73.881562 6.2123341,77.596184 5.7833943,72.190209 4.6137838,71.845803 1.86430204,75.819672 1.63201654,70.967766 1.5,70.928894 1.6210922,70.739586 1.61023271,70.512757 1.82352334,70.423119 9.4601397,58.484448 17.990415,43.81778 23.493822,33.151123 29.075767,22.484452 31.29075,16.706665 34.828208,8.3750299 C34.852291,3.5399958 38.403003,2.9538513 42.002983,2.5897505 L42.655071,2.5389531 42.315593,2.1547939 C45.122215,1.6783843 47.614818,1.48138094 49.828048,1.50137573 z"      
+                        Height="134" RenderTransformOrigin="0.58,0.30" HorizontalAlignment="Left" VerticalAlignment="Top" UseLayoutRounding="False">
+                    <Path.RenderTransform>
+                        <CompositeTransform Rotation="6.26" SkewX="0" SkewY="-4.94" ScaleX="-0.99" ScaleY="1.004" TranslateX="21.95" TranslateY="1.91"/>
+                    </Path.RenderTransform>
+                </Path>
+
+                <!-- Fondo de los ojos de Mankey (izquierdo y derecho) -->
+                <Path Data="M50.894196,1.5 L50.92207,1.75164163 C51.030564,2.8022511 51.124237,3.8617427 51.202702,4.9294465 L51.288853,6.2330987 50.34792,28.984518 50.33511,29.0753 C50.183026,30.097759 50.016701,31.11033 49.836522,32.112345 L49.834042,32.125551 1.5,31.856554 z" Stroke="Black" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Height="51" Canvas.Left="21.437" Canvas.Top="90.045" Width="76" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="White" UseLayoutRounding="False" >
+                    <Path.RenderTransform>
+                        <CompositeTransform Rotation="0.8" SkewY="0.115" ScaleX="-1"/>
+                    </Path.RenderTransform>
+                </Path>
+                <Path Data="M50.894196,1.5 L50.92207,1.75164163 C51.030564,2.8022511 51.124237,3.8617427 51.202702,4.9294465 L51.288853,6.2330987 50.34792,28.984518 50.33511,29.0753 C50.183026,30.097759 50.016701,31.11033 49.836522,32.112345 L49.834042,32.125551 1.5,31.856554 z" HorizontalAlignment="Left" Height="51" Canvas.Left="131.018" Stroke="Black" Stretch="Fill" Canvas.Top="89.756" VerticalAlignment="Top" Width="76" Fill="White" UseLayoutRounding="False" />
+
+                <!-- Ojos de Mankey (izquierdo y derecho), representados por elipses -->
+                <Ellipse x:Name="Fondo_ojo_izq" Height="31" Canvas.Left="156" Stroke="Black" Canvas.Top="113" Width="19" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="#FFED3F0F"/>
+                <Ellipse x:Name="Fondo_ojo_der" Height="31" Canvas.Left="50" Stroke="Black" Canvas.Top="113" Width="21" Fill="#FFE6461A" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Ellipse x:Name="Pupila_der" Height="16,5" Canvas.Left="57" Stroke="Black" Canvas.Top="121" Width="7" Fill="Black" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Ellipse x:Name="Pupila_izq" Height="16,5" Canvas.Left="163" Stroke="Black" Canvas.Top="121" Width="7" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="Black"/>
+                <!-- Nariz del Mankey  -->
+                <Ellipse x:Name="Nariz" Height="51" Stroke="Black" Width="85" HorizontalAlignment="Left" Canvas.Left="71" Canvas.Top="121" VerticalAlignment="Top" Fill="#FFCCA8B2"/>
+
+                <!-- Sombra de la nariz de Mankey, representada por una elipse que da un efecto de profundidad y resalta la parte inferior de la cara. -->
+                <Ellipse x:Name="Sombra_nariz" Height="42" Canvas.Left="73"  Canvas.Top="126" Width="67" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="#FFF1D6DF"/>
+
+                <!-- Orificios de la nariz de Mankey -->
+                <Path x:Name="Orificio_der" Data="M178.944,180.587 L178.944,183.74222" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="9" Canvas.Left="97.44" Stroke="Black" Stretch="Fill" Canvas.Top="148.631" VerticalAlignment="Top" Width="1" UseLayoutRounding="False"/>
+                <Path x:Name="Orificio_izq" Data="M178.944,180.587 L178.944,183.74222" Fill="#FFF4F4F5" Height="9" Canvas.Left="112.973" Stroke="Black" Stretch="Fill" Canvas.Top="148.631" Width="1" HorizontalAlignment="Left" VerticalAlignment="Top" UseLayoutRounding="False"/>
+
+                <!-- Sombra de la frente de Mankey, que ayuda a darle profundidad a la cara y simula una luz que incide desde arriba. -->
+                <Path x:Name="Sombra_frente" Data="M150.77778,90.223704 L164.49977,74.90859 182.52329,77.631165 192.31494,77.933686 204.78686,71.580751 200.62231,104.41651 212.84255,104.1121 218.88096,99.247539 228.0745,106.84841 235.43324,126.59484 231.72589,142.31826 191.00273,159.42434 173.59211,167.01538 166.50982,168.52983 123.13081,117.47896 130.49201,104.36507 z" Fill="#FFFBF4EC" Height="149" Canvas.Left="14.068" Stretch="Fill" Canvas.Top="-25.473" Width="171" HorizontalAlignment="Left" VerticalAlignment="Top" UseLayoutRounding="False"/>
+
+
+                <Path x:Name="Gesto_izq" Data="M204.11111,152.44593 C204.11111,152.44593 200.05567,155.5014 201.83345,160.24215" Fill="#FFF4F4F5" Height="24" Canvas.Left="131.593" Stroke="Black" Stretch="Fill" Canvas.Top="95.075" Width="7" HorizontalAlignment="Left" VerticalAlignment="Top" UseLayoutRounding="False"/>
+                <Path x:Name="Gesto_der" Data="M171.81481,153.63111 C173.59259,159.26074 173.09241,158.76084 173.09241,158.76084" Fill="#FFF4F4F5" Height="9" Canvas.Left="87.249" Stroke="Black" Stretch="Fill" Canvas.Top="106.004" Width="2" UseLayoutRounding="False"/>
+
+                <!-- Pelos del Mankey -->
+                <Path x:Name="Pelos_der" Data="M133.2963,199.92741 L126.57437,206.24264 125.15181,198.15412 115.19702,198.7535 116.09063,196.05733" Height="17" Canvas.Left="1.18" Stroke="Black" Stretch="Fill" Canvas.Top="173.748" Width="28" HorizontalAlignment="Left" VerticalAlignment="Top" UseLayoutRounding="False"/>
+                <Path x:Name="Pelos_izq" Data="M247.66667,225.11259 L246.87004,222.53811 255.13169,221.26636 252.99009,215.85317 259.10984,211.18953 251.70582,208.71466" Height="30" Canvas.Left="199.812" Stroke="Black" Stretch="Fill" Canvas.Top="192.756" Width="24" HorizontalAlignment="Left" VerticalAlignment="Top" UseLayoutRounding="False"/>
+
+                <!-- Gestos de la rodilla izquierda de Mankey-->
+                <Path x:Name="Gesto_rodilla1" Data="M275.37037,256.37185 C275.37037,256.37185 274.27814,262.39023 283.16703,263.57541" Height="13" Canvas.Left="242.49" Stroke="Black" Stretch="Fill" Canvas.Top="270.775" Width="13" UseLayoutRounding="False"/>
+                <Path x:Name="Gesto_rodilla2" Data="M494.92593,321.41037 C494.92593,321.41037 498.50001,330.50593 492.87038,336.13556" Height="25" Stroke="Black" Stretch="Fill" Width="6" HorizontalAlignment="Left" Canvas.Left="266.716" Canvas.Top="257.945" VerticalAlignment="Top" UseLayoutRounding="False"/>
+
+
+                <!-- Orejas del Mankey -->
+                <Path x:Name="Oreja_der" Data="M7.0118576,0.5 8.0118576,1.5 L20.429266,34.961472 19.936933,34.982265 C16.862592,35.139919 13.012748,35.719879 8.9031922,36.71545 5.9677945,37.426575 3.2472581,38.265594 0.90982735,39.148651 L0.5,39.306835 z"                  
+                    Fill="#FFA28067" Height="65" Stroke="Black" Stretch="Fill" Width="30" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Canvas.Left="0.841" Canvas.Top="-38.614" VerticalAlignment="Top" UseLayoutRounding="False">
+                    <Path.RenderTransform>
+                        <CompositeTransform Rotation="-26" SkewX="0" ScaleX="1.0" ScaleY="1" SkewY="2"/>
+                    </Path.RenderTransform>
+                </Path>
+                <Path x:Name="Oreja_izq" Data="M7.0118576,0.5 8.0118576,1.5 L20.429266,34.961472 19.936933,34.982265 C16.862592,35.139919 13.012748,35.719879 8.9031922,36.71545 5.9677945,37.426575 3.2472581,38.265594 0.90982735,39.148651 L0.5,39.306835 z"
+                    Fill="#FFA28067" Height="62" Stroke="Black" Stretch="Fill" Width="41" RenderTransformOrigin="0.5,0.5" Canvas.Left="217.878" Canvas.Top="-30.505" HorizontalAlignment="Left" VerticalAlignment="Center" UseLayoutRounding="False">
+                    <Path.RenderTransform>
+                        <CompositeTransform Rotation="38.75" SkewX="0" ScaleX="1.04" ScaleY="1" SkewY="4"/>
+                    </Path.RenderTransform>
+                </Path>
+
+                <Image x:Name="OjosKO_Mankey"
+                    Source="AssetsMankeyAGM/ojosKO.png"
+                    Width="180"
+                    Height="180"
+                    Canvas.Left="28"
+                    Canvas.Top="40"
+                    Visibility="Collapsed"/>
+
+
+                <Image x:Name="ko"
+                    Source="AssetsMankeyAGM/ko.png"
+                    Width="300"
+                    Height="300"
+                    Canvas.Left="300"
+                    Canvas.Top="-200"
+                    Visibility="Collapsed"
+                    Opacity="0.9"/>
+
+            </Canvas>
+
+            <Image x:Name="Escudo_Mankey" Source="AssetsMankeyAGM/escudo.png"
+                   Width="500" Height="500"
+                   Canvas.Left="-125" Canvas.Top="-100"
+                   Visibility="Collapsed" Opacity="0.92"
+                   RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <ScaleTransform x:Name="EscudoScale" ScaleX="1" ScaleY="1"/>
+                </Image.RenderTransform>
+            </Image>
+
+            <Image x:Name="Herida_Mankey"
+                   Source="/AssetsMankeyAGM/herida.png"
+                   Width="100" Height="100"
+                   Canvas.Left="50" Canvas.Top="10"
+                   Visibility="Collapsed"
+                   Opacity="0.85" />
+
+            <Image x:Name="Sudor_Mankey"
+                   Source="/AssetsMankeyAGM/gotas_sudor.png"
+                   Width="80" Height="80"
+                   Canvas.Left="190" Canvas.Top="30"
+                   Visibility="Collapsed"
+                   Opacity="0.9" />
+
+            <Image x:Name="EfectoGolpe"
+                   Source="AssetsMankeyAGM/EfectoGolpe.png"
+                   Width="100"
+                   Height="100"
+                   Canvas.Left="420"
+                   Canvas.Top="335"
+                   Visibility="Collapsed"
+                   Opacity="0.9"/>
+
+
+            <Image x:Name="EfectoGolpe2"
+                   Source="AssetsMankeyAGM/EfectoGolpe2.png"
+                   Width="100"
+                   Height="100"
+                   Canvas.Left="420"
+                   Canvas.Top="335"
+                   Visibility="Collapsed"
+                   Opacity="0.9"/>
+
+            <Image x:Name="IconoZzz"
+                   Source="AssetsMankeyAGM/zzz.png"
+                   Width="150"
+                   Height="150"
+                   Canvas.Left="330"
+                   Canvas.Top="-300"
+                   Visibility="Collapsed"
+                   Opacity="0.9"/>
+
+
+            <Image x:Name="NombreMankey"
+                   Source="AssetsMankeyAGM/nombre.png"
+                   Width="311"
+                   Height="88"
+                   Canvas.Left="501"
+                   Canvas.Top="-78"
+                   Visibility="Collapsed"/>
+
+        </Canvas>
+
+    </Grid>
+</UserControl>
